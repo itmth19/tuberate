@@ -12,6 +12,7 @@ Tuberate::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 	post  'tubes/:id/voteup' => 'tubes#voteup', as: :voteup
   post 'tubes/:id/votedown' => 'tubes#votedown', as: :votedown
+	post 'tubes/cleartubes' => 'tubes#cleartubes' ,as: :cleartube
 	# Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

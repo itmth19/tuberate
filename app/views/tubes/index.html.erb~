@@ -1,4 +1,5 @@
 <h1>Youtube link Ranking</h1>
+<h2>version beta 0.1</h2>
 <div class="tubes_list_wrapper">
 <ul id="tubes_list">
 	<% @tubes.each do |tube| %>
@@ -14,6 +15,7 @@
 <div class="tubes_functions_wrapper">
 	<ul id="tubes_functions">
 		<li><%= link_to 'Add Youtube Link',new_tube_path%></li>
+		<li><%= link_to 'Deletes All Youtube Links', cleartubes_path, :method => 'cleartubes'%></li>
 	</ul>
 </div>
 
