@@ -5,6 +5,7 @@ class TubesController < ApplicationController
 
 	def create
 		@tube = Tube.new(params[:tube].permit(:title,:link))
+		@tube=/.+\=(?<href>.+)/.match(@tube.link)[:href]
 		@tube.rank=Tube.count+1
 		@tube.save
 		redirect_to @tube
@@ -27,5 +28,9 @@ class TubesController < ApplicationController
 	end
 
 	def votedown
+		@tube = Tube.find(params[:id])
+		@tube.rank = @tube.rank - 1
+		@tube.save
+		redirect_to tube_path(@tube)
 	end
 end
