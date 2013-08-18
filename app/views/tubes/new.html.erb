@@ -1,13 +1,9 @@
 <h1>New Youtube Link</h1>
 <%= form_for :tube ,url: tubes_path do |f| %>
-	<p>
-		<%= f.label :title %><br>
-		<%= f.text_field :title %>
-	</p>
-	
-	<p>
+  <span class="instruction">Please enter your link(s) here, seperated by <b>new line</b></span>
+  <p>
 		<%= f.label :link %><br>
-		<%= f.text_field :link %>
+		<%= f.text_area :link %>
 	</p>
 	
 	<p>

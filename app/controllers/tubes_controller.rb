@@ -6,13 +6,17 @@ class TubesController < ApplicationController
 	end
   
 	def create
-		@tube = Tube.new(params[:tube].permit(:title,:link))
-    source = open(@tube.link).read
-    @tube.title=/<title>(?<title>.+)<\/title>/.match(source)[:title]
-		@tube.link=/.+\=(?<href>.+)/.match(@tube.link)[:href]
-		@tube.rank=1
-		@tube.save
-		redirect_to @tube
+		@tubeX = Tube.new(params[:tube].permit(:title,:link))
+    links = @tubeX.link.lines.map(&:chomp)
+    links.each do |link|
+      source = open(link).read
+      @tube = Tube.new
+      @tube.title=/<title>(?<title>.+)<\/title>/.match(source)[:title]
+		  @tube.link=/.+\=(?<href>.+)/.match(link)[:href]
+		  @tube.rank=1
+		  @tube.save
+    end
+		redirect_to tubes_path
 	end
 
 	def show

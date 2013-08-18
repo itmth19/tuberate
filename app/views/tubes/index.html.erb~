@@ -1,5 +1,12 @@
 <h1>Youtube link Ranking</h1>
-<h2>version beta 0.1</h2>
+<h2>version beta 0.2</h2>
+<h3>LOG:</h3>
+<ul class="log">
+  <li>Now can add multiple youtube links</li>
+  <li>Auto retrieve title</li>
+</ul>
+
+<h3>Youtube Links List</h3>
 <div class="tubes_list_wrapper">
 <ul id="tubes_list">
 	<% @tubes.each do |tube| %>
