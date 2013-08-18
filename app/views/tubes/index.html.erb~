@@ -4,7 +4,7 @@
 <ul id="tubes_list">
 	<% @tubes.each do |tube| %>
 		<li>
-		<span class="tube_title"><%= tube.title %></span>
+		<span class="tube_title"><%= raw tube.title %></span>
 		<span  style="color:red" class="tube_rank"><%= tube.rank %></span>
 			<%= link_to 'Show', tube_path(tube.id)%>	
 		</li>
