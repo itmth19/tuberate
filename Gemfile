@@ -33,6 +33,8 @@ group :doc do
 end
 gem 'rails_12factor', group: :production
 
+#newly addded by THAI
+gem 'htmlentities'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -15,7 +15,7 @@
 <div class="tubes_functions_wrapper">
 	<ul id="tubes_functions">
 		<li><%= link_to 'Add Youtube Link',new_tube_path%></li>
-		<li><%= link_to 'Deletes All Youtube Links', cleartubes_path, :method => 'cleartubes'%></li>
+		<li><%= link_to 'Deletes All Youtube Links', cleartube_path, :method => 'cleartubes'%></li>
 	</ul>
 </div>
 

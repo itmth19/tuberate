@@ -1,10 +1,14 @@
+require 'open-uri'
+
 class TubesController < ApplicationController
 	def new
 		
 	end
-
+  
 	def create
 		@tube = Tube.new(params[:tube].permit(:title,:link))
+    source = open(@tube.link).read
+    @tube.title=raw /<title>(?<title>.+)<\/title>/.match(source)[:title]
 		@tube.link=/.+\=(?<href>.+)/.match(@tube.link)[:href]
 		@tube.rank=1
 		@tube.save
@@ -36,5 +40,6 @@ class TubesController < ApplicationController
 
 	def cleartubes
 		Tube.delete_all
+		redirect_to tubes_path
 	end
 end

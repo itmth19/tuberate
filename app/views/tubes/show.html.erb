@@ -1,5 +1,5 @@
 <h1>Youtube link ID=<%= @tube.id %></h1>
-<p>Title : <%= @tube.title%></p>
+<p>Title : <%= raw @tube.title%></p>
 <p>Link : <%= @tube.link%></p>
 <p>Rank: <%= @tube.rank%></p>
 <p><iframe width="560" height="315" src="//www.youtube.com/embed/<%= @tube.link%>" frameborder="0" allowfullscreen></iframe></p>
