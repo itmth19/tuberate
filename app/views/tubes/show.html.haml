@@ -1,0 +1,34 @@
+%h1
+  Youtube link ID=#{@tube.id}
+%p
+  Title : #{raw @tube.title}
+%p
+  Link : #{@tube.link}
+%p
+  Rank: #{@tube.rank}
+%p
+  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "//www.youtube.com/embed/#{@tube.link}", :width => "560"}
+.vote_wrapper
+  = button_to 'Vote Up', voteup_tube_path(@tube)
+  = button_to 'Vote Down', votedown_tube_path(@tube)
+%h2 Comments
+%ul.comments_wrapper
+  - @tube.comments.each do |comment|
+    %li
+      %span.comment_author= comment.author
+      %span.comment_body= comment.body
+%h2 Add Comments
+= form_for([@tube,@tube.comments.build]) do |f|
+  %p
+    = f.label :author
+    %br/
+    = f.text_field :author
+    %br/
+  %p
+    = f.label :body
+    %br/
+    = f.text_area :body
+    %br/
+  %p
+    = f.submit
+= link_to 'Back to Tubes', tubes_path

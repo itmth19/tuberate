@@ -1,0 +1,18 @@
+%h1 Youtube link Ranking
+%h2 version beta 0.2
+%h3 LOG:
+%ul.log
+  %li Now can add multiple youtube links
+  %li Auto retrieve title
+%h3 Youtube Links List:
+.tubes_list_wrapper
+  %ul#tubes_list
+    - @tubes.each do |tube|
+      %li
+        %span.tube_title= raw tube.title
+        %span.tube_rank{:style => "color:red"}= tube.rank
+        = link_to 'Show', tube_path(tube)
+.tubes_functions_wrapper
+  %ul#tubes_functions
+    %li= link_to 'Add Youtube Link', new_tube_path
+    %li= link_to 'Deletes All Youtube Links', all_tubes_path, :method => 'delete'
