@@ -1,18 +1,21 @@
 Tuberate::Application.routes.draw do
-  get "welcome/index"
+	root 'tubes#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   resources :tubes do
 		resources :comments
+
+    post 'voteup' => 'tubes#voteup', on: :member, as: :voteup
+    post 'votedown' => 'tubes#votedown', on: :member, as: :votedown
+    delete 'all' => 'tubes#cleartubes', on: :collection, as: :all
 	end
-	root 'welcome#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-	post  'tubes/:id/voteup' => 'tubes#voteup', as: :voteup
-  post 'tubes/:id/votedown' => 'tubes#votedown', as: :votedown
-	post 'tubes/cleartubes' => 'tubes#cleartubes' ,as: :cleartube
+
 	# Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

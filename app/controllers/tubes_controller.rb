@@ -1,8 +1,13 @@
 require 'open-uri'
 
 class TubesController < ApplicationController
+  before_action :set_tube, only: [:show, :edit, :update, :destroy, :votedown, :voteup]
+
+	def index
+		@tubes = Tube.find(:all,:order => "rank DESC")
+	end
+
 	def new
-		
 	end
   
 	def create
@@ -16,34 +21,40 @@ class TubesController < ApplicationController
 		  @tube.rank=1
 		  @tube.save
     end
-		redirect_to tubes_path
+		redirect_to @tube
 	end
 
 	def show
-		@tube = Tube.find(params[:id])
-	end
-
-	def index
-		@tubes = Tube.find(:all,:order => "rank DESC")
-
 	end
 
 	def voteup
-		@tube = Tube.find(params[:id])
-		@tube.rank=@tube.rank + 1
-		@tube.save
-		redirect_to tube_path(@tube)	
+		@tube.rank += 1
+
+		if @tube.save
+      redirect_to @tube
+    else
+      # TODO Throw error
+    end
 	end
 
 	def votedown
-		@tube = Tube.find(params[:id])
-		@tube.rank = @tube.rank - 1
-		@tube.save
-		redirect_to tube_path(@tube)
+		@tube.rank -= 1
+
+		if @tube.save
+      redirect_to @tube
+    else
+      # TODO Throw error
+    end
 	end
 
 	def cleartubes
+    # FIXME
 		Tube.delete_all
 		redirect_to tubes_path
 	end
+
+  private
+    def set_tube
+      @tube = Tube.find(params[:id])
+    end
 end
