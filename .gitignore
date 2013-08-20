@@ -18,5 +18,9 @@
 # Ignore Gemfile versions
 /Gemfile.lock
 
+# Ignore editing files
 *.swp
+*~
+ftp.sh
+vim-ruby
 
