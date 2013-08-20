@@ -6,5 +6,36 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    %h1= link_to "TUBERATE", root_path
-    = yield
+    %nav.navbar.navbar-default{:role => "navigation"}
+      .container
+        .navbar-header
+          = link_to "TUBERATE", root_path, :class => "navbar-brand"
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          = button_to new_tube_path,
+            :class => "btn btn-primary navbar-btn pull-right", :type => "button" do
+            %span.glyphicon.glyphicon-cloud-upload
+            &nbsp;ADD YOUTUBE LINK
+            
+    .container
+      .alert.alert-success
+        %strong
+          Youtube link Ranking
+        This application is playground for Thai and ug. Anyone join?
+
+      .row
+        .col-md-3
+          .list-group
+            = link_to "Hot", nil, :class => "list-group-item active"
+            = link_to "New", nil, :class => "list-group-item"
+            = link_to "Rising", nil, :class => "list-group-item"
+            = link_to "Sports", nil, :class => "list-group-item"
+            = link_to "Music", nil, :class => "list-group-item"
+            = link_to "...", nil, :class => "list-group-item"
+            = link_to "...", nil, :class => "list-group-item"
+            = link_to "...", nil, :class => "list-group-item"
+        .col-md-9
+          = yield
+
+      %hr
+      = render "partials/debug"
+

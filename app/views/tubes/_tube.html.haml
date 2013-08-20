@@ -1,7 +1,16 @@
-%li
-  = button_to 'Vote Up', voteup_tube_path(tube)
+.media
   = link_to image_tag("http://img.youtube.com/vi/" + tube.link + "/hqdefault.jpg",
-    :class => "tube_thumbnail", :style => "width:182px;"), tube
-  %span.tube_title= link_to tube.title, tube
-  %span.tube_rank{:style => "color:red"}= tube.rank
+    :class => "media-object", :style => "width:182px;"), tube, :class => "pull-left"
+  .media-body
+  %h4.media-heading
+    %span.label.label-danger= tube.rank
+    = link_to (raw tube.title), tube
+  %p
+    = button_to voteup_tube_path(tube), :class => "btn btn-success" do
+      %span.glyphicon.glyphicon-thumbs-up
+      &nbsp;VOTE UP
+  %p
+    = button_to voteup_tube_path(tube), :class => "btn btn-warning" do
+      %span.glyphicon.glyphicon-thumbs-down
+      &nbsp;DOWN
 

@@ -41,7 +41,10 @@ gem 'htmlentities'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Bootstrap Sass: https://github.com/thomas-mcdonald/bootstrap-sass
-gem 'bootstrap-sass', '~> 2.3.2.1'
+# gem 'bootstrap-sass', '~> 2.3.2.1'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails',
+                              :branch => '3.0.0'
 
 # FontAwesome: https://github.com/bokmann/font-awesome-rails
 gem 'font-awesome-rails'
