@@ -11,7 +11,7 @@
         .navbar-header
           = link_to "TUBERATE", root_path, :class => "navbar-brand"
         .collapse.navbar-collapse.navbar-ex1-collapse
-          = button_to new_tube_path,
+          = button_to new_tube_path, :method => "get",
             :class => "btn btn-primary navbar-btn pull-right", :type => "button" do
             %span.glyphicon.glyphicon-cloud-upload
             &nbsp;ADD YOUTUBE LINK
