@@ -5,8 +5,8 @@
 <p><iframe width="560" height="315" src="//www.youtube.com/embed/<%= @tube.link%>" frameborder="0" allowfullscreen></iframe></p>
 
 <div class="vote_wrapper">
-	<%= button_to 'Vote Up',voteup_path(@tube.id)%>
-	<%= button_to 'Vote Down',votedown_path(@tube.id)%>
+	<%= button_to 'Vote Up', voteup_tube_path(@tube)%>
+	<%= button_to 'Vote Down', votedown_tube_path(@tube)%>
 </div>
 
 <h2>Comments</h2>

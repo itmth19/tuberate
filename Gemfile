@@ -4,8 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
+
+gem 'pg', group: :production
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -37,6 +39,31 @@ gem 'rails_12factor', group: :production
 gem 'htmlentities'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Bootstrap Sass: https://github.com/thomas-mcdonald/bootstrap-sass
+gem 'bootstrap-sass', '~> 2.3.2.1'
+
+# FontAwesome: https://github.com/bokmann/font-awesome-rails
+gem 'font-awesome-rails'
+
+# Mobile-Fu: https://github.com/benlangfeld/mobile-fu
+gem 'mobile-fu'
+
+# Haml
+gem 'haml'
+gem "haml-rails"
+
+# Convert erb to haml
+gem 'erb2haml'
+
+# Dummy model
+gem "static_model"
+
+# Cells - https://github.com/apotonick/cells
+gem 'cells'
+
+# Devise - https://github.com/plataformatec/devise
+gem 'devise'
 
 # Use unicorn as the app server
 # gem 'unicorn'
