@@ -37,8 +37,6 @@ GEM
     arel (4.0.0)
     atomic (1.1.13)
     bcrypt-ruby (3.1.1)
-    bootstrap-sass (2.3.2.1)
-      sass (~> 3.2)
     builder (3.1.4)
     cells (3.8.8)
       actionpack (>= 3.0)
@@ -166,7 +164,6 @@ PLATFORMS
 
 DEPENDENCIES
   anjlab-bootstrap-rails!
-  bootstrap-sass (~> 2.3.2.1)
   cells
   coffee-rails (~> 4.0.0)
   devise
