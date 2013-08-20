@@ -6,12 +6,7 @@
 %h3 Youtube Links List:
 .tubes_list_wrapper
   %ul#tubes_list
-    - @tubes.each do |tube|
-      %li
-        %span.tube_title= raw tube.title
-        %span.tube_rank{:style => "color:red"}= tube.rank
-        = link_to 'Show', tube_path(tube)
-        = image_tag "http://img.youtube.com/vi/" + tube.link + "/hqdefault.jpg", :size => "182x102"
+    = render @tubes
 .tubes_functions_wrapper
   %ul#tubes_functions
     %li= link_to 'Add Youtube Link', new_tube_path

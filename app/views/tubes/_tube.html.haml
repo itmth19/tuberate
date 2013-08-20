@@ -1,0 +1,7 @@
+%li
+  = button_to 'Vote Up', voteup_tube_path(tube)
+  = link_to image_tag("http://img.youtube.com/vi/" + tube.link + "/hqdefault.jpg",
+    :class => "tube_thumbnail", :style => "width:182px;"), tube
+  %span.tube_title= link_to tube.title, tube
+  %span.tube_rank{:style => "color:red"}= tube.rank
+

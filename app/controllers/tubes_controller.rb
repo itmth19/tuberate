@@ -16,9 +16,9 @@ class TubesController < ApplicationController
     links.each do |link|
       source = open(link).read
       @tube = Tube.new
-      @tube.title=/<title>(?<title>.+)<\/title>/.match(source)[:title]
-		  @tube.link=/.+\=(?<href>.+)/.match(link)[:href]
-		  @tube.rank=1
+      @tube.title = /<title>(?<title>.+)<\/title>/.match(source)[:title]
+		  @tube.link = /.+\=(?<href>.+)/.match(link)[:href]
+		  @tube.rank = 1
 		  @tube.save
     end
 		redirect_to @tube

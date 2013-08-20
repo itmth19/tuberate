@@ -3,7 +3,8 @@
 %p
   Title : #{raw @tube.title}
 %p
-  Link : #{@tube.link}
+  Link : 
+  =link_to @tube.link, "http://www.youtube.com/watch?v=#{@tube.link}", :target => "_blank"
 %p
   Rank: #{@tube.rank}
 %p
