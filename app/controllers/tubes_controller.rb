@@ -14,12 +14,10 @@ class TubesController < ApplicationController
 		@tubeX = Tube.new(params[:tube].permit(:title,:link))
     links = @tubeX.link.lines.map(&:chomp)
     links.each do |link|
-      source = open(link).read
-      @tube = Tube.new
-      @tube.title = /<title>(?<title>.+)<\/title>/.match(source)[:title]
-		  @tube.link = /.+\=(?<href>.+)/.match(link)[:href]
-		  @tube.rank = 1
-		  @tube.save
+      @tube = Tube.create({
+        title: fetch_title(link),
+        link: extract_link(link)
+      })
     end
 		redirect_to @tube
 	end
@@ -56,5 +54,14 @@ class TubesController < ApplicationController
   private
     def set_tube
       @tube = Tube.find(params[:id])
+    end
+
+    def fetch_title(link)
+      source = open(link).read
+      /<title>(?<title>.+)<\/title>/.match(source)[:title]
+    end
+
+    def extract_link(link)
+		  /.+\=(?<href>.+)/.match(link)[:href]
     end
 end

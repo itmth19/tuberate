@@ -4,7 +4,7 @@
   Title : #{raw @tube.title}
 %p
   Link : 
-  =link_to @tube.link, "http://www.youtube.com/watch?v=#{@tube.link}", :target => "_blank"
+  =tube_link_to @tube.link, @tube.link, :target => "_blank"
 %p
   Rank: #{@tube.rank}
 %p
@@ -12,12 +12,11 @@
 .vote_wrapper
   = button_to 'Vote Up', voteup_tube_path(@tube)
   = button_to 'Vote Down', votedown_tube_path(@tube)
+
 %h2 Comments
 %ul.comments_wrapper
-  - @tube.comments.each do |comment|
-    %li
-      %span.comment_author= comment.author
-      %span.comment_body= comment.body
+  = render partial: "comment", collection: @tube.comments, as: :comment
+
 %h2 Add Comments
 = form_for([@tube,@tube.comments.build]) do |f|
   %p
