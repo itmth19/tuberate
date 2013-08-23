@@ -1,17 +1,30 @@
-%h1
-  Youtube link ID=#{@tube.id}
-%p
-  Title : #{raw @tube.title}
-%p
-  Link : 
-  =tube_link_to @tube.link, @tube.link, :target => "_blank"
-%p
-  Rank: #{@tube.rank}
-%p
-  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "//www.youtube.com/embed/#{@tube.link}", :width => "560"}
-.vote_wrapper
-  = button_to 'Vote Up', voteup_tube_path(@tube)
-  = button_to 'Vote Down', votedown_tube_path(@tube)
+.row
+  .col-md-8
+    %p
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "//www.youtube.com/embed/#{@tube.link}", :width => "560"}
+  .col-md-4
+    .panel.panel-danger
+      .panel-heading Ranking
+      .panel-body
+        .vote_wrapper
+          .row
+            Rank: #{@tube.rank} 
+          .row
+            .col-md-3
+              = button_to voteup_tube_path(@tube), :class => "btn btn-success btn-sm" do
+                %span.glyphicon.glyphicon-thumbs-up
+                %nbsp UP
+            .col-md-3
+              = button_to votedown_tube_path(@tube), :class => "btn btn-danger btn-sm" do
+                %span.glyphicon.glyphicon-thumbs-down
+                %nbsp DOWN
+.row
+  .col-md-2
+    %h4
+      %span.label.label-danger.glyphicon.glyphicon-expand Youtube
+  .col-md-10
+    %h4
+      #{raw @tube.title}
 
 %h2 Comments
 %ul.comments_wrapper
